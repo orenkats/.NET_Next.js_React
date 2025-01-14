@@ -11,18 +11,18 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
   const renderDetails = () => (
     <>
       <h2 className={styles.userName}>
-        {user.name.title} {user.name.first} {user.name.last}
+        {user.firstName} {user.lastName} 
       </h2>
       <p className={styles.userEmail}>Email: {user.email}</p>
-      <p className={styles.userGender}>Gender: {user.gender}</p>
+      <p className={styles.userGender}>Gender: {user.dateOfBirth}</p>
     </>
   );
 
   return (
     <div className={styles.userCard}>
       <img
-        src={user.picture.thumbnail}
-        alt={`${user.name.first} ${user.name.last}`}
+        src={user.profilePicture}
+        alt={`${user.address} ${user.phone}`}
         className={styles.userImage}
       />
       {renderDetails()}

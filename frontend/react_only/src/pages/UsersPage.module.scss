@@ -1,0 +1,29 @@
+$page-background: #f8f9fa;
+$page-title-color: #333;
+$grid-gap: 16px;
+$message-color: #666;
+
+.pageContainer {
+  padding: 16px; // Add padding to the page container
+  background-color: $page-background; // Light gray background color
+}
+
+.pageTitle {
+  font-size: 24px; // Large font size for the title
+  font-weight: bold; // Bold text for the title
+  margin-bottom: 16px; // Space below the title
+  color: $page-title-color; // Dark gray color for the text
+}
+
+.usersGrid {
+  display: grid; // Set up a grid layout
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Responsive grid columns
+  gap: $grid-gap; // Spacing between grid items
+}
+
+.message {
+  text-align: center; // Center the message text
+  font-size: 18px; // Medium font size for the message
+  color: $message-color; // Medium gray color for the text
+  margin: 20px 0; // Space around the message
+}

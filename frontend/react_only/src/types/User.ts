@@ -1,25 +1,19 @@
-// types/User.ts
 export interface User {
-  gender: string;
-  name: {
-    title: string;
-    first: string;
-    last: string;
-  };
+  id: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  picture: {
-    large: string;
-    medium: string;
-    thumbnail: string;
-  };
+  dateOfBirth: string;
+  phone: string;
+  address: string;
+  profilePicture: string;
 }
 
 export interface UserResponse {
   results: User[];
   info: {
-    seed: string;
-    results: number;
+    totalCount: number; // Updated for backend response
     page: number;
-    version: string;
+    pageSize: number;
   };
 }

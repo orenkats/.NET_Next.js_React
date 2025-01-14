@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useFetchUsers from "../hooks/useFetchUsers";
 import UserCard from "../components/UserCard";
 import Pagination from "../components/Pagination";
+import styles from "./UsersPage.module.scss"; 
 
 const UsersPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1); // State for current page
@@ -10,23 +11,23 @@ const UsersPage: React.FC = () => {
   // Fetch users based on the current page
   const { data, isLoading, error } = useFetchUsers(currentPage, usersPerPage);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (isLoading) return <p className={styles.message}>Loading...</p>;
+  if (error) return <p className={styles.message}>Error: {error.message}</p>;
+  if (!data?.info?.totalCount) {
+    return <p className={styles.message}>No data available</p>;
+  }
 
   // Calculate total pages from the API response
-  const totalPages = 5; 
-  console.log(data?.info.results); // Should log the total number of users
+  const totalPages = Math.ceil(data.info.totalCount / usersPerPage);
 
   return (
-    <div>
-      <h1>Users</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {data?.results.map((user, index) => (
+    <div className={styles.pageContainer}>
+      <h1 className={styles.pageTitle}>Users</h1>
+      <div className={styles.usersGrid}>
+        {data.results.map((user, index) => (
           <UserCard key={index} user={user} />
         ))}
       </div>
-
-      {/* Pass currentPage, totalPages, and setCurrentPage to Pagination */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

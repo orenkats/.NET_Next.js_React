@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
-using UserApi.Infrastructure.Repositories;
 using UserApi.Application.Interfaces;
+using UserApi.Application.DTOs;
 using UserApi.Domain.Entities;
 using UserApi.Domain.Models;
 
@@ -20,9 +20,19 @@ public class UserService : IUserService
     }
 
     public async Task<IEnumerable<User>> GetUsersAsync(int page, int pageSize)
-    {
-        return await _repository.GetUsersAsync(page, pageSize);
-    }
+        {
+            // Get the total user count from the database
+            var totalUserCount = await _repository.GetTotalUserCountAsync();
+
+            // If the database has insufficient users, fetch more from the external API
+            if ((page - 1) * pageSize >= totalUserCount)
+            {
+                await FetchAndSaveUsersAsync(20); // Ensure this method is implemented
+            }
+
+            // Fetch the users for the requested page from the database
+            return await _repository.GetUsersAsync(page, pageSize);
+        }
 
     public async Task<User> GetUserByIdAsync(Guid id)
     {
@@ -34,9 +44,9 @@ public class UserService : IUserService
         return await _repository.SearchUsersAsync(query);
     }
 
-    public async Task SyncUsersWithApiAsync()
+    public async Task FetchAndSaveUsersAsync(int count)
     {
-        var response = await _httpClient.GetStringAsync(_apiUrl);
+        var response = await _httpClient.GetStringAsync($"{_apiUrl}?results={count}");
         var apiResponse = JsonConvert.DeserializeObject<UserApiResponse>(response);
 
         if (apiResponse?.Results == null) return;
@@ -54,5 +64,32 @@ public class UserService : IUserService
         });
 
         await _repository.SaveUsersAsync(users);
+    }
+
+    public async Task<PaginatedResponseDto<UserDto>> GetPaginatedUsersAsync(int page, int pageSize)
+    {
+        var users = await _repository.GetUsersAsync(page, pageSize);
+        var totalCount = await _repository.GetTotalUserCountAsync();
+
+        return new PaginatedResponseDto<UserDto>
+        {
+            Results = users.Select(u => new UserDto
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email,
+                DateOfBirth = u.DateOfBirth ?? DateTime.MinValue,
+                Phone = u.Phone,
+                Address = u.Address,
+                ProfilePicture = u.ProfilePicture
+            }),
+            Info = new PaginationInfoDto
+            {
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            }
+        };
     }
 }

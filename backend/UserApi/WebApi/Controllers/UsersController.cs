@@ -15,10 +15,11 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
+    [HttpGet]
     public async Task<IActionResult> GetUsers([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        var users = await _userService.GetUsersAsync(page, pageSize);
-        return Ok(users);
+        var response = await _userService.GetPaginatedUsersAsync(page, pageSize);
+        return Ok(response);
     }
 
     [HttpGet("{id}")]
@@ -36,10 +37,4 @@ public class UsersController : ControllerBase
         return Ok(users);
     }
 
-    [HttpPost("sync")]
-    public async Task<IActionResult> SyncUsers()
-    {
-        await _userService.SyncUsersWithApiAsync();
-        return NoContent();
-    }
 }
