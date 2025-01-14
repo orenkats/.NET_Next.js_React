@@ -1,24 +1,16 @@
-using Microsoft.EntityFrameworkCore;
+using UserApi.Infrastructure.Configurations;
 using Microsoft.OpenApi.Models;
 using UserApi.Data;
-using UserApi.Data.Repositories;
-using UserApi.Services;
 using UserApi.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure database connection
+builder.Services.AddDbConfiguration(builder.Configuration);
 // Add services to the container
 builder.Services.AddControllers();
 
-// Configure Entity Framework Core with SQL Server
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Register repositories
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-// Register services
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddApplicationServices();
 
 // Add HttpClient for external API calls
 builder.Services.AddHttpClient();

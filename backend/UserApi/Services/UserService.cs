@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using UserApi.Data.Repositories;
 using UserApi.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace UserApi.Services;
 
@@ -8,11 +9,13 @@ public class UserService : IUserService
 {
     private readonly IUserRepository _repository;
     private readonly HttpClient _httpClient;
+    private readonly string? _apiUrl;
 
-    public UserService(IUserRepository repository, HttpClient httpClient)
+    public UserService(IUserRepository repository, HttpClient httpClient, IConfiguration configuration)
     {
         _repository = repository;
         _httpClient = httpClient;
+        _apiUrl = configuration["ExternalApi:RandomUserUrl"];
     }
 
     public async Task<IEnumerable<User>> GetUsersAsync(int page, int pageSize)
@@ -32,7 +35,7 @@ public class UserService : IUserService
 
     public async Task SyncUsersWithApiAsync()
     {
-        var response = await _httpClient.GetStringAsync("https://exampleapi.com/api?results=50");
+        var response = await _httpClient.GetStringAsync(_apiUrl);
         var apiResponse = JsonConvert.DeserializeObject<UserApiResponse>(response);
 
         if (apiResponse?.Results == null) return;
