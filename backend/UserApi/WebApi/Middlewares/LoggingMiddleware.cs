@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace UserApi.Utilities
+namespace UserApi.WebApi.Middlewares
 {
     public class LoggingMiddleware
     {

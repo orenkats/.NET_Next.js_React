@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using UserApi.Data;
+using UserApi.Infrastructure.DbContexts;
 
 namespace UserApi.Infrastructure.Configurations
 {

@@ -1,12 +1,12 @@
 using UserApi.Infrastructure.Configurations;
 using Microsoft.OpenApi.Models;
-using UserApi.Data;
-using UserApi.Utilities;
+using UserApi.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure database connection
 builder.Services.AddDbConfiguration(builder.Configuration);
+
 // Add services to the container
 builder.Services.AddControllers();
 

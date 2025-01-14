@@ -1,9 +1,10 @@
 using Newtonsoft.Json;
-using UserApi.Data.Repositories;
-using UserApi.Models;
-using Microsoft.Extensions.Configuration;
+using UserApi.Infrastructure.Repositories;
+using UserApi.Application.Interfaces;
+using UserApi.Domain.Entities;
+using UserApi.Domain.Models;
 
-namespace UserApi.Services;
+namespace UserApi.Application.Services;
 
 public class UserService : IUserService
 {

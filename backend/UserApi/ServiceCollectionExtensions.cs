@@ -1,5 +1,6 @@
-using UserApi.Data.Repositories;
-using UserApi.Services;
+using UserApi.Infrastructure.Repositories;
+using UserApi.Application.Services;
+using UserApi.Application.Interfaces;
 
 public static class ServiceCollectionExtensions
 {

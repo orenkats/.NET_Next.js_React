@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using UserApi.Models;
+using UserApi.Infrastructure.DbContexts;
+using UserApi.Application.Interfaces;
+using UserApi.Domain.Entities;
 
-namespace UserApi.Data.Repositories;
+namespace UserApi.Infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
