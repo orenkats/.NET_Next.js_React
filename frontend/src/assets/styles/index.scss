@@ -1,0 +1,28 @@
+// index.scss
+@use './variables' as *;
+@use './mixins';
+@use './utilities';
+@use './tailwind';
+
+// Global resets and base styles
+body {
+  margin: 0;
+  font-family: $font-family;
+  background-color: $background-color;
+  font-size: $font-size-base;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
