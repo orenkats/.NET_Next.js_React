@@ -1,3 +1,4 @@
+// types/User.ts
 export interface User {
   gender: string;
   name: {
@@ -13,7 +14,7 @@ export interface User {
   };
 }
 
-export interface RandomUserResponse {
+export interface UserResponse {
   results: User[];
   info: {
     seed: string;

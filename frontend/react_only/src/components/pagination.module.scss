@@ -1,0 +1,37 @@
+.paginationContainer {
+  display: flex; /* Aligns child elements in a horizontal row */
+  justify-content: center; /* Centers pagination buttons horizontally */
+  margin-top: 16px; /* Adds spacing above the pagination */
+}
+
+.paginationList {
+  display: flex; /* Arranges page numbers in a horizontal row */
+  gap: 8px; /* Adds spacing between pagination buttons */
+  list-style: none; /* Removes default list styling (e.g., bullets) */
+  padding: 0; /* Removes default padding from the list */
+  margin: 0; /* Removes default margin from the list */
+}
+
+.paginationButton {
+  padding: 8px 12px; /* Adds space inside each button */
+  border: 1px solid #ddd; /* Adds a light border to the button */
+  border-radius: 4px; /* Rounds the corners of the button */
+  background-color: #fff; /* Sets the button background to white */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions background color on hover */
+
+  &:hover {
+    background-color: #f0f0f0; /* Changes background color on hover */
+  }
+}
+
+.paginationButtonActive {
+  background-color: #007bff; /* Sets the active button's background to blue */
+  color: #fff; /* Sets the active button's text color to white */
+  border-color: #007bff; /* Matches the active button's border color to its background */
+}
+
+.paginationButtonDisabled {
+  opacity: 0.5; /* Reduces the opacity of disabled buttons */
+  cursor: not-allowed; /* Changes the cursor to indicate the button is disabled */
+}

@@ -1,25 +1,31 @@
-import React from 'react';
-import { User } from '../types/User';
+import React from "react";
+import { User } from "../types/User";
+import styles from "./userCard.module.scss";
 
 interface UserCardProps {
   user: User;
 }
 
-/**
- * A card component to display random user information.
- * @param {UserCardProps} props - The props containing the user data.
- */
 const UserCard: React.FC<UserCardProps> = ({ user }) => {
-  return (
-    <div style={{ border: '1px solid #ddd', padding: '16px', borderRadius: '8px' }}>
-      <img
-        
-      />
-      <h2>
+  // Helper function to render user details
+  const renderDetails = () => (
+    <>
+      <h2 className={styles.userName}>
         {user.name.title} {user.name.first} {user.name.last}
       </h2>
-      <p>Email: {user.email}</p>
-      <p>Gender: {user.gender}</p>
+      <p className={styles.userEmail}>Email: {user.email}</p>
+      <p className={styles.userGender}>Gender: {user.gender}</p>
+    </>
+  );
+
+  return (
+    <div className={styles.userCard}>
+      <img
+        src={user.picture.thumbnail}
+        alt={`${user.name.first} ${user.name.last}`}
+        className={styles.userImage}
+      />
+      {renderDetails()}
     </div>
   );
 };

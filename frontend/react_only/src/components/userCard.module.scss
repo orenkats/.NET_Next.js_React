@@ -1,0 +1,31 @@
+.userCard {
+    border: 1px solid #ddd; /* Adds a light border around the card */
+    padding: 16px; /* Creates spacing inside the card */
+    border-radius: 8px; /* Rounds the corners of the card */
+    text-align: center; /* Centers text and elements inside the card */
+    background-color: #fff; /* Sets the card background to white */
+    transition: box-shadow 0.2s ease; /* Adds a smooth shadow transition on hover */
+  
+    &:hover {
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow when hovered */
+    }
+  }
+  
+  .userImage {
+    border-radius: 50%; /* Makes the user image circular */
+    margin-bottom: 8px; /* Adds spacing below the image */
+  }
+  
+  .userName {
+    font-size: 18px; /* Sets the font size for the user's name */
+    font-weight: bold; /* Makes the name text bold */
+    margin: 8px 0; /* Adds vertical spacing around the name */
+  }
+  
+  .userEmail,
+  .userGender {
+    font-size: 14px; /* Sets the font size for the email and gender text */
+    color: #555; /* Sets a medium gray color for the text */
+    margin: 4px 0; /* Adds vertical spacing between email and gender lines */
+  }
+  

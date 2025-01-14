@@ -1,0 +1,52 @@
+# Ignore build directories
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.vspscc
+*.vssscc
+.vscode/
+
+# Ignore Rider project files
+.idea/
+
+# Ignore Visual Studio Code workspace settings
+.vscode/
+
+# Ignore NuGet packages
+*.nupkg
+# The packages folder can be ignored if using PackageReference
+# (NuGet packages will be downloaded at build time).
+packages/
+
+# Ignore compiled files
+*.dll
+*.exe
+*.so
+*.dylib
+*.pyc
+*.class
+
+# Ignore database files
+*.mdf
+*.ldf
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.cache
+
+# Ignore publish output
+publish/
+wwwroot/
+
+# Ignore secrets and sensitive files
+appsettings*.json
+.env
+
+# Ignore Mac system files
+.DS_Store
