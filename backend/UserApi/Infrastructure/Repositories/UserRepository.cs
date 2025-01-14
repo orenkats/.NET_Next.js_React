@@ -8,10 +8,12 @@ namespace UserApi.Infrastructure.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<UserRepository> _logger;
 
-        public UserRepository(ApplicationDbContext context)
+        public UserRepository(ApplicationDbContext context, ILogger<UserRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // Method to fetch a paginated list of users
@@ -48,7 +50,10 @@ namespace UserApi.Infrastructure.Repositories
         // Method to get the total number of users in the database
         public async Task<int> GetTotalUserCountAsync()
         {
-            return await _context.Users.CountAsync();
+            var count = await _context.Users.CountAsync();
+            return count;
         }
+
+
     }
 }

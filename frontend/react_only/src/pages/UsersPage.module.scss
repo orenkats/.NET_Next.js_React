@@ -16,10 +16,14 @@ $message-color: #666;
 }
 
 .usersGrid {
-  display: grid; // Set up a grid layout
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Responsive grid columns
-  gap: $grid-gap; // Spacing between grid items
+  display: flex; /* Use flexbox for a vertical layout */
+  flex-direction: column; /* Arrange items vertically */
+  gap: $grid-gap; /* Spacing between items */
+  max-height: 80vh; /* Set a maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 8px; /* Add padding for scrollbar spacing */
 }
+
 
 .message {
   text-align: center; // Center the message text

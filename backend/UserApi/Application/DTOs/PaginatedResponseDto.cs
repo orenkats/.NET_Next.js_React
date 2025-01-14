@@ -1,3 +1,4 @@
+
 namespace UserApi.Application.DTOs
 {
     public class PaginatedResponseDto<T>

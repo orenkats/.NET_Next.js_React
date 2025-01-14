@@ -4,7 +4,7 @@ using UserApi.Application.Interfaces;
 using UserApi.Application.Services;
 using UserApi.Infrastructure.Repositories;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace UserApi.Extentions
 {
     public static class ServiceCollectionExtensions
     {

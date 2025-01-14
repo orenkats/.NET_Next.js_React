@@ -1,4 +1,6 @@
 
+using UserApi.Extentions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure services

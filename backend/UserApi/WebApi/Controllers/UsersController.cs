@@ -15,7 +15,6 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    [HttpGet]
     public async Task<IActionResult> GetUsers([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
         var response = await _userService.GetPaginatedUsersAsync(page, pageSize);
