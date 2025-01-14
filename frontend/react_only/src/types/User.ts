@@ -1,4 +1,4 @@
-export interface RandomUser {
+export interface User {
   gender: string;
   name: {
     title: string;
@@ -14,7 +14,7 @@ export interface RandomUser {
 }
 
 export interface RandomUserResponse {
-  results: RandomUser[];
+  results: User[];
   info: {
     seed: string;
     results: number;

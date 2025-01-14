@@ -1,5 +1,5 @@
 import api from "./api";
-import { RandomUserResponse } from "../types/RandomUserTypes";
+import { RandomUserResponse } from "../types/User";
 
 /**
  * Fetches random user data from the API.

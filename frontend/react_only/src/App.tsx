@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "./components/Layout/Layout";
-import RandomUserPage from "./pages/RandomUserPage";
+import Layout from "./components/Layout";
+import UsersPage from "./pages/UsersPage";
 
 const App: React.FC = () => {
   return (
     <Layout>
-      <RandomUserPage /> {/* Include the RandomUserPage */}
+      <UsersPage /> {/* Include the RandomUserPage */}
     </Layout>
   );
 };

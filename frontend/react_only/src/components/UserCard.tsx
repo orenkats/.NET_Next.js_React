@@ -1,15 +1,15 @@
 import React from 'react';
-import { RandomUser } from '../types/RandomUserTypes';
+import { User } from '../types/User';
 
-interface RandomUserCardProps {
-  user: RandomUser;
+interface UserCardProps {
+  user: User;
 }
 
 /**
  * A card component to display random user information.
- * @param {RandomUserCardProps} props - The props containing the user data.
+ * @param {UserCardProps} props - The props containing the user data.
  */
-const RandomUserCard: React.FC<RandomUserCardProps> = ({ user }) => {
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
   return (
     <div style={{ border: '1px solid #ddd', padding: '16px', borderRadius: '8px' }}>
       <img
@@ -24,4 +24,4 @@ const RandomUserCard: React.FC<RandomUserCardProps> = ({ user }) => {
   );
 };
 
-export default RandomUserCard;
+export default UserCard;
